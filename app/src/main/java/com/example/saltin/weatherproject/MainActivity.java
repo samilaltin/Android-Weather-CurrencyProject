@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -36,9 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
     Typeface weatherFont;
 
+
+
     private BroadcastReceiver broadcastReceiver;
 
+    Function.placeIdTask asyncTask;
+
     double lat, lon;
+    boolean isGPS = false;
 
     @Override
     protected void onResume() {
@@ -47,7 +54,19 @@ public class MainActivity extends AppCompatActivity {
             broadcastReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
-                    //coordinate değişkene ata onu kullan
+                    double lat = intent.getDoubleExtra("lat", 0.0);
+                    double lon = intent.getDoubleExtra("lon", 0.0);
+
+
+                    if (!isGPS) {
+                        String str = lat + "";
+                        String str2 = lon + "";
+                        str = str.replace(",", ".");
+                        str2 = str2.replace(",", ".");
+                        asyncTask.execute(str, str2);
+                        isGPS = true;
+                    }
+
                 }
             };
         }
@@ -89,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
 //        RefreshCurrency();
 
 
+
         String weekDay;
         Calendar dt = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("E,d MMMM yyyy", Locale.US);
@@ -103,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         myThread.start();
 
 
-        Function.placeIdTask asyncTask = new Function.placeIdTask(new Function.AsyncResponse() {
+        asyncTask = new Function.placeIdTask(new Function.AsyncResponse() {
             @Override
             public void processFinish(String weather_city, String weather_description, String weather_temperature, String weather_humidity, String weather_pressure, String weather_updatedOn, String weather_iconText, String sun_rise) {
 
@@ -125,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 //                String currentDate = (weekDay) + "," + (day < 10 ? ("0" + day) : (day)) + "." + (month < 2 ? ("0" + month) : (month)) + "." + (year);
             }
         }, lat, lon);
-        asyncTask.execute("25.180000", "89.530000");
+
         Currency.currencyIdTask asyncCurrencyTask = new Currency.currencyIdTask(new Currency.AsyncResponse() {
             @Override
             public void processUpdate(String dolar_buy, String dolar_sale, String euro_buy, String euro_sale) {
@@ -145,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
     private void enable_service() {
         Intent intent = new Intent(MainActivity.this, GPS_Service.class);
         startService(intent);
+//        stopService(intent);
     }
 
     private boolean runtime_permissions() {

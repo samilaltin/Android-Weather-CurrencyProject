@@ -24,12 +24,13 @@ import java.util.Calendar;
 public class Function {
 
 
+
     //    private static final String OPEN_WEATHER_MAP_URL =
 //            "http://api.openweathermap.org/data/2.5/weather?q=Istanbul&appid=";
 //    private static final String OPEN_WEATHER_MAP_URL =
 //            "http://api.openweathermap.org/data/2.5/weather?lat=lat&lon={lon}&appid";
     private static final String OPEN_WEATHER_MAP_URL =
-            "http://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&appid=%s";
+            "http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=%s";
 
     private static final String OPEN_WEATHER_MAP_API =
             "78f3101c021df85671ff76030df40543";
@@ -91,23 +92,15 @@ public class Function {
 
         }
 
-
         @Override
         protected JSONObject doInBackground(String... params) {
             JSONObject jsonWeather = null;
             try {
-                String str = lat + "";
-                String str2 = lon + "";
-                str = str.replace(",", ".");
-                str2 = str2.replace(",", ".");
-
-                jsonWeather = getWeatherJSON(str, str2);
-
-
-//                String str = Double.toString(lat);
-//                String str2 = Double.toString(lon);
-//                lat = str.replaceAll(",",".");
-
+//                String str = lat + "";
+//                String str2 = lon + "";
+//                str = str.replace(",", ".");
+//                str2 = str2.replace(",", ".");
+                jsonWeather = getWeatherJSON(params[0], params[1]);
 
             } catch (Exception e) {
                 Log.d("Error", "Cannot process JSON result", e);
@@ -138,7 +131,7 @@ public class Function {
 
                 }
             } catch (JSONException e) {
-                //Log.e(LOG_TAG, "Cannot process JSON results", e);
+//                Log.e("Error", "Cannot process JSON results", e);
             }
         }
     }
@@ -147,7 +140,7 @@ public class Function {
     public static JSONObject getWeatherJSON(String lat, String lon) {
         try {
 
-            URL url = new URL(String.format(OPEN_WEATHER_MAP_URL, lat, lon));
+            URL url = new URL(String.format(OPEN_WEATHER_MAP_URL, lat, lon, OPEN_WEATHER_MAP_API));
             HttpURLConnection connection =
                     (HttpURLConnection) url.openConnection();
 
