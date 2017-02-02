@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.saltin.weatherproject.MainActivity"
+    android:background="#3F5185"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/city_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+        android:id="@+id/updated_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/city_field"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/weather_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="90sp"/>
+
+    <TextView
+        android:id="@+id/current_tempature_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50sp"/>
+
+    <TextView
+        android:id="@+id/details_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weather_icon"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <TextView
+        android:id="@+id/humidity_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_field"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <TextView
+        android:id="@+id/pressure_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/humidity_field"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <TextView
+        android:id="@+id/date_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#FFFFFFFF"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/time_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFFFF"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/date_field"
+        android:layout_alignRight="@id/date_field"
+        android:layout_alignLeft="@id/date_field"
+        android:gravity="center"/>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <TableRow
+            android:id="@+id/row1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+            <TextView/>
+
+            <TextView
+                android:id="@+id/txtBuyRate" android:text="Buy Rate"
+
+                android:textColor="#ffffff" android:layout_height="wrap_content"
+                android:padding="20dip" android:gravity="center"/>
+            <TextView
+                android:id="@+id/txtSaleRate" android:text="Sale Rate "
+
+                android:textColor="#ffffff"
+                android:padding="20dip" android:gravity="center"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row2"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+
+            <TextView
+                android:id="@+id/txtDolar"   android:text="Dolar"
+                android:layout_height="wrap_content" android:textColor="#ffffff"
+                android:layout_width="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/txtDolarBuy" android:gravity="center"
+                android:layout_height="wrap_content"  android:textColor="#ffffff"
+                android:layout_width="wrap_content"/>
+            <TextView
+                android:id="@+id/txtDolarSale" android:gravity="center"
+                android:layout_height="wrap_content"   android:textColor="#ffffff"
+                android:layout_width="wrap_content"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row3"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+            <TextView
+                android:id="@+id/txtEuro"    android:text="Euro"
+                android:layout_height="wrap_content" android:textColor="#ffffff"
+                android:layout_width="wrap_content"/>
+            <TextView
+                android:id="@+id/txtEuroBuy" android:gravity="center"
+                android:layout_height="wrap_content" android:textColor="#ffffff"
+                android:layout_width="wrap_content"/>
+            <TextView
+                android:id="@+id/txtEuroSale" android:gravity="center"
+                android:layout_height="wrap_content"  android:textColor="#ffffff"
+                android:layout_width="wrap_content"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>
